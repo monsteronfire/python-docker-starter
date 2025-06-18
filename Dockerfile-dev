@@ -1,0 +1,13 @@
+FROM python:3.11.3
+WORKDIR /app
+
+ENV TERM=xterm-256color
+
+RUN echo "PS1='\[\e[38;2;183;148;244m\]\u\[\e[0m\]\[\e[38;2;234;186;134m\]@\[\e[0m\]\[\e[38;2;112;197;189m\]\h\[\e[38;2;234;186;134m\]:\[\e[38;5;205m\]\w\[\e[0m\]\[\e[38;2;234;186;134m\]# \[\e[0m\]'" >> /root/.bashrc
+
+# Set up Python environment
+COPY requirements.txt .
+RUN pip install --upgrade pip && \
+    pip install -r requirements.txt
+
+COPY . .

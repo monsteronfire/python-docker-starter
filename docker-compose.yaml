@@ -1,0 +1,15 @@
+name: pythondocker
+
+services:
+  app:
+    build:
+      context: ./
+      dockerfile: Dockerfile-dev
+    container_name: pythondocker_app
+    restart: always
+    stdin_open: true
+    tty: true
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
